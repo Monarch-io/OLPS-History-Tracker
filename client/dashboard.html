@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dashboard - OLPS History Tracker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - OLPS History Tracker</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-  
-    <h1>Welcome to the Dashboard</h1>
-  
-    <div id="activityLog"></div>
-  
-    <h3>Add Activity</h3>
-    <input type="text" id="newAction" placeholder="Enter action description" />
-    <button id="addActivityBtn">Add Activity</button>
+<body class="dashboard">
+    <div class="container fade-in">
+        <div class="title-banner">
+            <h1>OLPS History Tracker</h1>
+            <div class="subtitle">Dashboard</div>
+        </div>
+        
+        <div class="welcome-message">
+            <h2>Welcome to the Dashboard</h2>
+        </div>
+        
+        <div id="activityLog"></div>
+        
+        <h3>Add Activity</h3>
+        <div class="add-activity-section">
+            <input type="text" id="newAction" placeholder="Enter action description" />
+            <button id="addActivityBtn">Add Activity</button>
+        </div>
+    </div>
     
     <script src="dashboard.js"></script>
-
 </body>
 </html>
