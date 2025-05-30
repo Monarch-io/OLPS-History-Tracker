@@ -1,0 +1,43 @@
+const express = require("express");
+const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
+
+const app = express();
+const PORT = 3000;
+
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "..", "client")));
+
+const usersPath = path.join(__dirname, "..", "data", "users.json");
+const activityPath = path.join(__dirname, "..", "data", "activity.json");
+
+app.post("/api/login", (req, res) => {
+  const { username, password } = req.body;
+  const users = JSON.parse(fs.readFileSync(usersPath, "utf-8"));
+  const user = users.find(u => u.username === username && u.password === password);
+  if (user) {
+    res.json({ success: true, role: user.role, username: user.username });
+  } else {
+    res.status(401).json({ success: false, message: "Invalid credentials" });
+  }
+});
+
+app.get("/api/activity", (req, res) => {
+  const activity = JSON.parse(fs.readFileSync(activityPath, "utf-8"));
+  res.json(activity);
+});
+
+app.post("/api/activity", (req, res) => {
+  const { username, timestamp, action } = req.body;
+  const newLog = { username, timestamp, action };
+  const activity = JSON.parse(fs.readFileSync(activityPath, "utf-8"));
+  activity.push(newLog);
+  fs.writeFileSync(activityPath, JSON.stringify(activity, null, 2));
+  res.json({ success: true });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
