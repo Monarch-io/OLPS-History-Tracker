@@ -24,9 +24,30 @@ app.post("/api/login", (req, res) => {
   }
 });
 
+app.get("/api/users", (req, res) => {
+  const users = JSON.parse(fs.readFileSync(usersPath, "utf-8"));
+  res.json(users);
+});
+
 app.get("/api/activity", (req, res) => {
+  const { username, role } = req.query; // Sent from frontend
   const activity = JSON.parse(fs.readFileSync(activityPath, "utf-8"));
-  res.json(activity);
+  const users = JSON.parse(fs.readFileSync(usersPath, "utf-8"));
+
+  let filteredActivities;
+  if (role === "admin") {
+    filteredActivities = activity; // Admins see everything
+  } else if (role === "teacher") {
+    // Teachers see their activities + all students'
+    filteredActivities = activity.filter(
+      act => act.username === username || users.some(u => u.role === "student" && u.username === act.username)
+    );
+  } else {
+    // Students/others see only their own
+    filteredActivities = activity.filter(act => act.username === username);
+  }
+
+  res.json(filteredActivities);
 });
 
 app.post("/api/activity", (req, res) => {
@@ -34,6 +55,23 @@ app.post("/api/activity", (req, res) => {
   const newLog = { username, timestamp, action };
   const activity = JSON.parse(fs.readFileSync(activityPath, "utf-8"));
   activity.push(newLog);
+  fs.writeFileSync(activityPath, JSON.stringify(activity, null, 2));
+  res.json({ success: true });
+});
+
+app.delete("/api/activity/:id", (req, res) => {
+  const { id } = req.params;
+  let activity = JSON.parse(fs.readFileSync(activityPath, "utf-8"));
+  activity = activity.filter((_, index) => index !== parseInt(id));
+  fs.writeFileSync(activityPath, JSON.stringify(activity, null, 2));
+  res.json({ success: true });
+});
+
+app.put("/api/activity/:id", (req, res) => {
+  const { id } = req.params;
+  const { action } = req.body;
+  let activity = JSON.parse(fs.readFileSync(activityPath, "utf-8"));
+  activity[parseInt(id)].action = action;
   fs.writeFileSync(activityPath, JSON.stringify(activity, null, 2));
   res.json({ success: true });
 });

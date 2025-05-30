@@ -389,6 +389,10 @@ button:active {
         min-width: auto;
     }
     
+    .add-activity-section select {
+        min-width: 100%;
+    }
+
     .stats-section {
         grid-template-columns: 1fr;
     }
@@ -413,4 +417,40 @@ button:active {
     .activity-item {
         padding: 12px 15px;
     }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e6ed;
+}
+
+th {
+  background-color: #f8f9ff;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  font-size: 0.9rem;
+}
+
+/* Admin buttons */
+button:nth-child(1) { background: linear-gradient(45deg, #3498db, #2980b9); }
+button:nth-child(2) { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+
+.add-activity-section select {
+  padding: 15px;
+  border: 2px solid #e0e6ed;
+  border-radius: 10px;
+  font-size: 16px;
+  background: white;
+  flex: 1;
+  min-width: 200px;
 }

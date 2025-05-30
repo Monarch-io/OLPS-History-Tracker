@@ -22,10 +22,17 @@
         <h3>Add Activity</h3>
         <div class="add-activity-section">
             <input type="text" id="newAction" placeholder="Enter action description" />
-            <button id="addActivityBtn">Add Activity</button>
+  
+            <!-- Show user dropdown ONLY for admins -->
+            <select id="targetUser" style="display: none;">
+                <option value="">-- Select User --</option>
+            </select>
+  
+        <button id="addActivityBtn">Add Activity</button>
         </div>
     </div>
     
     <script src="dashboard.js"></script>
 </body>
 </html>
+

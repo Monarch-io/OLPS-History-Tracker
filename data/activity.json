@@ -13,5 +13,25 @@
     "username": "student1",
     "timestamp": "2025-05-30T02:31:06.278Z",
     "action": "Left Campus"
+  },
+  {
+    "username": "MikelTaopa",
+    "timestamp": "2025-05-30T04:00:22.862Z",
+    "action": "Created minimal final product"
+  },
+  {
+    "username": "MikelTaopa",
+    "timestamp": "2025-05-30T04:00:41.024Z",
+    "action": "Added basic UI and UX design"
+  },
+  {
+    "username": "student2",
+    "timestamp": "2025-05-30T04:01:32.720Z",
+    "action": "Entered Campus"
+  },
+  {
+    "username": "student1",
+    "timestamp": "2025-05-30T07:54:54.354Z",
+    "action": "w"
   }
 ]
