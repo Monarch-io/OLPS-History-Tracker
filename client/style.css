@@ -1,7 +1,3 @@
-/* OLPS History Tracker - Combined CSS Stylesheet */
-/* Works for both Login and Dashboard pages */
-
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -393,6 +389,12 @@ button:active {
         min-width: 100%;
     }
 
+    .add-activity-section select,
+    #purchaseAmount {
+        width: 100%;
+        min-width: auto;
+    }
+
     .stats-section {
         grid-template-columns: 1fr;
     }
@@ -446,11 +448,20 @@ button:nth-child(1) { background: linear-gradient(45deg, #3498db, #2980b9); }
 button:nth-child(2) { background: linear-gradient(45deg, #e74c3c, #c0392b); }
 
 .add-activity-section select {
-  padding: 15px;
-  border: 2px solid #e0e6ed;
-  border-radius: 10px;
-  font-size: 16px;
-  background: white;
-  flex: 1;
-  min-width: 200px;
+    padding: 15px;
+    border: 2px solid #e0e6ed;
+    border-radius: 10px;
+    font-size: 16px;
+    background: white;
+    flex: 1;
+    min-width: 200px;
+}
+
+#purchaseAmount {
+    padding: 15px;
+    border: 2px solid #e0e6ed;
+    border-radius: 10px;
+    font-size: 16px;
+    background: white;
+    width: 120px;
 }

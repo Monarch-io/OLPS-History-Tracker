@@ -28,10 +28,5 @@
     "username": "student2",
     "timestamp": "2025-05-30T04:01:32.720Z",
     "action": "Entered Campus"
-  },
-  {
-    "username": "student1",
-    "timestamp": "2025-05-30T07:54:54.354Z",
-    "action": "w"
   }
 ]
